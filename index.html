@@ -1,0 +1,35 @@
+<html>
+<head>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
+<script>
+function encrypt() {
+  var message = document.getElementById("message").value;
+  var password = document.getElementById("password").value;
+  var ciphertext = CryptoJS.AES.encrypt(message, password);
+  document.getElementById("ciphertext").value = ciphertext;
+}
+
+function decrypt() {
+  var ciphertext = document.getElementById("ciphertext").value;
+  var password = document.getElementById("password").value;
+  var plaintext = CryptoJS.AES.decrypt(ciphertext, password).toString(CryptoJS.enc.Utf8);
+  document.getElementById("plaintext").value = plaintext;
+}
+</script>
+</head>
+<body>
+<h1>HTML Encryption and Decryption</h1>
+<p>Enter your message and password below, then click Encrypt or Decrypt.</p>
+<label for="message">Message:</label>
+<input type="text" id="message" name="message"><br>
+<label for="password">Password:</label>
+<input type="password" id="password" name="password"><br>
+<button onclick="encrypt()">Encrypt</button>
+<button onclick="decrypt()">Decrypt</button>
+<p>The encrypted and decrypted text will appear below.</p>
+<label for="ciphertext">Encrypted text:</label>
+<input type="text" id="ciphertext" name="ciphertext" readonly><br>
+<label for="plaintext">Decrypted text:</label>
+<input type="text" id="plaintext" name="plaintext" readonly><br>
+</body>
+</html>
